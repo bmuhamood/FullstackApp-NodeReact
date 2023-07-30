@@ -1,33 +1,18 @@
-import logo from './logo.svg';
-import { useState } from 'react';
-import './App.css';
+import React from "react";
+import Register from "./pages/Register";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Login from "./pages/Login";
+import Cards from "./pages/Cards";
+import "react-toastify/dist/ReactToastify.css";
 
-function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function App() {
   return (
-    <div>
-      <h1>Register</h1>
-      <form>
-        <input value={name} 
-        onChange={(e) => setName(e.target.value)} 
-        type="text" 
-        placeholder="Name" 
-        />
-        <input value={email} 
-        onChange={(e) => setEmail(e.target.value)} 
-        type="email" 
-        placeholder="Email" 
-        />
-        <input value={password} 
-        onChange={(e) => setPassword(e.target.value)} 
-        type="password" 
-        placeholder="password" 
-        />
-      </form>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/" element={<Cards />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
